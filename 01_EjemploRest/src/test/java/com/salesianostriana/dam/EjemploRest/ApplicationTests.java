@@ -1,4 +1,4 @@
-package com.salesianostriana.dam._EjemploRest;
+package com.salesianostriana.dam.EjemploRest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

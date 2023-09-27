@@ -1,4 +1,4 @@
-package com.salesianostriana.dam._EjemploRest;
+package com.salesianostriana.dam.EjemploRest;
 
 import org.springframework.stereotype.Repository;
 
@@ -8,8 +8,8 @@ import java.util.*;
 public class RepositorioAlumno {
 
     private List<Alumno> alumnos;
-
-    public RepositorioAlumno(List<Alumno> alumnos) {
+    
+    /*public RepositorioAlumno(List<Alumno> alumnos) {
         alumnos = new ArrayList<>();
 
         alumnos.add(
@@ -61,5 +61,5 @@ public class RepositorioAlumno {
                 pos = i;
         }
         return pos;
-    }
+    }*/
 }
