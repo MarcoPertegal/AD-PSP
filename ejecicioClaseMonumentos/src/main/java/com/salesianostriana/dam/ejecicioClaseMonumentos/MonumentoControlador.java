@@ -9,11 +9,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/monumento")
 public class MonumentoControlador {
 
     private final MonumentoRepositorio monumentoRepositorio;
 
-    @GetMapping("/monumento/")
+    @GetMapping("/")
     public ResponseEntity<List<Monumento>> getAll(){
         List<Monumento> result = monumentoRepositorio.findAll();
 
@@ -23,18 +24,18 @@ public class MonumentoControlador {
     return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/monumento/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Monumento> getId(@PathVariable Long id){
         return ResponseEntity.of(monumentoRepositorio.findById(id));
     }
 
-    @PostMapping("/monumento/")
+    @PostMapping("/")
     public ResponseEntity<Monumento> create(@RequestBody Monumento monumento){
         Monumento nuevo = monumentoRepositorio.save(monumento);
         return ResponseEntity.status(201).body(nuevo);
     }
 
-    @PutMapping("/alumno/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Monumento> edit(@PathVariable Long id, @RequestBody Monumento monumento){
         return ResponseEntity.of(monumentoRepositorio.findById(id)
                 .map(antiguo -> {
@@ -47,14 +48,11 @@ public class MonumentoControlador {
                 }));
     }
 
-    @DeleteMapping("/alumno/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         if(monumentoRepositorio.existsById(id))
             monumentoRepositorio.deleteById(id);
 
         return ResponseEntity.noContent().build();
     }
-
-
-
 }

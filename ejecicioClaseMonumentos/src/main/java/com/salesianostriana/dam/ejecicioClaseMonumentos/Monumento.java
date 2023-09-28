@@ -20,10 +20,4 @@ public class Monumento {
     @GeneratedValue
     private long id;
     private String countryCode, country, city, name, descrip, imageUrl, logitude, latitude;
-
-
-
-
-
-
 }
