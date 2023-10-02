@@ -21,9 +21,8 @@ public class Restaurante {
     @GeneratedValue
     @Id
     private Long id;
-
-    private String nombre, direccion, longitud, latitud, descripcion, imagen;
-    private List listaTags = new ArrayList<String>();
-
+    //usamos los tags como String o array nomral porque aunque en springboot 6 funciona con arraylist
+    //en springboot 5 no acepta arraylist amenos que usemos una anotacion
+    private String nombre, direccion, longitud, latitud, descripcion, imagen, tags;
 
 }
