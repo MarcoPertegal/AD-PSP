@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.ejemplodtoconrecod.model;
+package com.salesianostriana.dam.ejemplodtoconrecod.model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.ejemplodtoconrecod.model;
+package com.salesianostriana.dam.ejemplodtoconrecod.model.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,5 +27,5 @@ public class Ruta {
     private Dificultad dificultad;
 
     @OneToMany
-    private List<Monumento> monumento;
+    private List<Monumento> monumentos;
 }

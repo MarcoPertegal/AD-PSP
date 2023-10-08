@@ -1,10 +1,10 @@
-package com.salesianostriana.dam.ejemplodtoconrecod.model;
+package com.salesianostriana.dam.ejemplodtoconrecod.model.entities;
 
+import com.salesianostriana.dam.ejemplodtoconrecod.model.entities.Categoria;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jdk.jfr.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
