@@ -1,12 +1,9 @@
 package com.salesianostriana.dam.ejemplodtoconrecod.controller;
 
+import com.salesianostriana.dam.ejemplodtoconrecod.dto.GetMonumentoDetailsDto;
 import com.salesianostriana.dam.ejemplodtoconrecod.dto.GetMonumentoDto;
 import com.salesianostriana.dam.ejemplodtoconrecod.model.entities.Monumento;
 import com.salesianostriana.dam.ejemplodtoconrecod.model.repos.MonumentoRepository;
-import com.salesianostriana.dam.rest.dto.dto.GetMonumentoDetailsDto;
-import com.salesianostriana.dam.rest.dto.dto.GetMonumentoDto;
-import com.salesianostriana.dam.rest.dto.model.entities.Monumento;
-import com.salesianostriana.dam.rest.dto.model.repos.MonumentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
