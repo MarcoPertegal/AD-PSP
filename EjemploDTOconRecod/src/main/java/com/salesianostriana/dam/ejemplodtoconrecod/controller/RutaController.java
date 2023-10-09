@@ -26,6 +26,8 @@ public class RutaController {
             return ResponseEntity.notFound().build();
         }
 
+
+        //transformacion a dtorecotd
         return ResponseEntity.ok(
                 rutas.stream()
                         .map(GetRutaDto::of)

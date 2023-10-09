@@ -5,10 +5,18 @@ import com.salesianostriana.dam.ejemplodtoconrecod.model.entities.Dificultad;
 import com.salesianostriana.dam.ejemplodtoconrecod.model.entities.Monumento;
 import com.salesianostriana.dam.ejemplodtoconrecod.model.entities.Ruta;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
+@RequiredArgsConstructor
 public class initData {
+
+    private final CategoriaRepository categoriaRepository;
+    private final MonumentoRepository monumentoRepository;
+    private final RutaRepository rutaRepository;
 
     @PostConstruct
     public void init() {
@@ -50,4 +58,5 @@ public class initData {
         rutaRepository.save(r);
 
     }
+
 }

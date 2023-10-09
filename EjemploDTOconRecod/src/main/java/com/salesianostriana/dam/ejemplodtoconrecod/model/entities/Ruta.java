@@ -16,12 +16,12 @@ import java.util.List;
 @Builder
 public class Ruta {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
     private String nombre;
-    private int tiempo;
+
+    private int tiempo; // en minutos
 
     @Enumerated(EnumType.STRING)
     private Dificultad dificultad;

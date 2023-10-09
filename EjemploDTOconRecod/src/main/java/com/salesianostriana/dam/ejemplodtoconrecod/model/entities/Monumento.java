@@ -1,25 +1,28 @@
 package com.salesianostriana.dam.ejemplodtoconrecod.model.entities;
 
 import com.salesianostriana.dam.ejemplodtoconrecod.model.entities.Categoria;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Monumento {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
-    private String nombre, codigoPais, ciudad, descripcion, localidad;
-    private String[] imagenes;
+    private String codigoPais, pais, ciudad,
+            loc, nombre, descripcion;
+
+    @ElementCollection // Obligatoria en Spring Boot 2.
+    private List<String> imagenes;
 
     @ManyToOne
     private Categoria categoria;
