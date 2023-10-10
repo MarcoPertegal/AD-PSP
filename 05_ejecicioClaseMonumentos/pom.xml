@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.salesianostriana.dam</groupId>
-	<artifactId>ejecicioClaseMonumentos</artifactId>
+	<artifactId>05_ejecicioClaseMonumentos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ejecicioClaseMonumentos</name>
 	<description>Demo project for Spring Boot</description>
