@@ -22,6 +22,7 @@ public class MonumentoController {
 
     private final MonumentoRepository monumentoRepository;
 
+    /*USANDO DTO
     @GetMapping("/")
     @JsonView(MonumentoList.class)
     public ResponseEntity<List<GetMonumentoDto>> todos() {
@@ -39,13 +40,34 @@ public class MonumentoController {
 
         return ResponseEntity.ok(result);
 
+    }*/
+
+    //USANDO JSONVIEW
+    @GetMapping("/")
+    @JsonView(MonumentoList.class)
+    public ResponseEntity<List<Monumento>> todos() {
+        List<Monumento> data = monumentoRepository.findAll();
+
+        if (data.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(data);
+
     }
 
+    /*USANDO DTO
     @GetMapping("/{id}")
     @JsonView(MonumentoId.class)
     public ResponseEntity<GetMonumentoDetailsDto> porId(@PathVariable Long id) {
         return ResponseEntity.of(monumentoRepository.findById(id)
                 .map(GetMonumentoDetailsDto::of));
+    }*/
+
+    //USANDO JSON VIEW
+    @GetMapping("/{id}")
+    @JsonView(MonumentoId.class)
+    public ResponseEntity<Monumento> porId(@PathVariable Long id) {
+        return ResponseEntity.of(monumentoRepository.findById(id));
     }
 
 }

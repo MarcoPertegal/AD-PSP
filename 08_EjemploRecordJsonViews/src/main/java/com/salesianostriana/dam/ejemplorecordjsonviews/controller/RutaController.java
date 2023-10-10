@@ -24,6 +24,7 @@ public class RutaController {
 
     //para vinular las listas se usa jsonview he importarlas
     //igual que con la entidad
+    /*CON DTO
     @GetMapping("/")
     @JsonView(RutaList.class)
     public ResponseEntity<List<GetRutaDto>> todas() {
@@ -40,8 +41,24 @@ public class RutaController {
                         .toList()
         );
 
+    }*/
+
+    //CON JSON VIEW
+    @GetMapping("/")
+    @JsonView(RutaList.class)
+    public ResponseEntity<List<Ruta>> todas() {
+
+        List<Ruta> rutas = rutaRepository.findAll();
+
+        if (rutas.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(rutas);
+
     }
 
+    /*CON DTO
     @PostMapping("/")
     public ResponseEntity<GetRutaDto> nuevaRuta(
             @RequestBody EditRutaDto nuevo) {
@@ -50,6 +67,19 @@ public class RutaController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(GetRutaDto.of(ruta));
+
+    }*/
+
+    //CON JSON VIEW
+    @PostMapping("/")
+    @JsonView(RutaEdit.class)
+    public ResponseEntity<Ruta> nuevaRuta(
+            @RequestBody EditRutaDto nuevo) {
+
+        Ruta ruta = rutaService.save(nuevo);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(ruta);
 
     }
 }
