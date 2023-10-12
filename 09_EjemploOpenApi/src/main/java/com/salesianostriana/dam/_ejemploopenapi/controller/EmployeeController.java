@@ -29,7 +29,8 @@ public class EmployeeController {
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "200", description = "Return employees",  content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Employee.class)))})
+                    @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Employee.class)))})
     })
     @Operation(summary = "Find all employees", description = "It returns all employees")
     @GetMapping("/employees")
