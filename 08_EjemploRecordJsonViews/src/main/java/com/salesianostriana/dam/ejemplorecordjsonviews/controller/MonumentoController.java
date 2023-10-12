@@ -24,7 +24,6 @@ public class MonumentoController {
 
     /*USANDO DTO
     @GetMapping("/")
-    @JsonView(MonumentoList.class)
     public ResponseEntity<List<GetMonumentoDto>> todos() {
 
         List<Monumento> data = monumentoRepository.findAll();
@@ -57,7 +56,6 @@ public class MonumentoController {
 
     /*USANDO DTO
     @GetMapping("/{id}")
-    @JsonView(MonumentoId.class)
     public ResponseEntity<GetMonumentoDetailsDto> porId(@PathVariable Long id) {
         return ResponseEntity.of(monumentoRepository.findById(id)
                 .map(GetMonumentoDetailsDto::of));

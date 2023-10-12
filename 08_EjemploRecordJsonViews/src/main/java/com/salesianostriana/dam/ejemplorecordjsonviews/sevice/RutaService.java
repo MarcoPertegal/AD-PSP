@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RutaService {
-    private final RutaRepository repository;
+    private final RutaRepository rutaRepository;
 
     // Inyectamos el repositorio mientras no tengamos servicio
     private final MonumentoRepository monumentoRepository;
@@ -45,6 +45,6 @@ public class RutaService {
         r.setMonumentos(monumentos);
 
 
-        return repository.save(r);
+        return rutaRepository.save(r);
     }
 }

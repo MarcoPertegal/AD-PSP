@@ -26,7 +26,6 @@ public class RutaController {
     //igual que con la entidad
     /*CON DTO
     @GetMapping("/")
-    @JsonView(RutaList.class)
     public ResponseEntity<List<GetRutaDto>> todas() {
 
         List<Ruta> rutas = rutaRepository.findAll();
