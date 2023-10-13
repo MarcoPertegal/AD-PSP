@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /*
@@ -35,6 +36,11 @@ public class EmployeeController {
     @Operation(summary = "Find all employees", description = "It returns all employees")
     @GetMapping("/employees")
     public ResponseEntity<List<Employee>> findAll(){
-        return null;
+        //meter datos
+        return ResponseEntity.ok(List.of(
+                new Employee(1L, "emp1", LocalDate.of(1990, 1, 1), 40000, true),
+                new Employee(1L, "emp1", LocalDate.of(1990, 1, 1), 40000, true),
+                new Employee(1L, "emp1", LocalDate.of(1990, 1, 1), 40000, true)
+        ));
     }
 }
