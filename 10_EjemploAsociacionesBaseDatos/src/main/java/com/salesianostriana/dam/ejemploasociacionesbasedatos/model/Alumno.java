@@ -1,10 +1,7 @@
 package com.salesianostriana.dam.ejemploasociacionesbasedatos.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @NoArgsConstructor
@@ -22,9 +19,16 @@ public class Alumno {
     private String apellidos;
     private String email;
 
+    @ToString.Exclude
     @ManyToOne
+    @JoinColumn(name = "curso_id")
     private Curso curso;
 
+    //Helpers faltan alguno
+    public void addToCurso(Curso curso){
+        this.curso = curso;
+        curso.getAlumnos().add(this);
+    }
 
 
 }

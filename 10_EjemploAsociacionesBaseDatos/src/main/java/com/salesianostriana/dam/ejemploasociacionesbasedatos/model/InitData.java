@@ -38,9 +38,9 @@ public class InitData {
                 .build();
         alumnoRepository.save(a1);
         alumnoRepository.save(a2);
-        /*
+
         c1.setAlumnos(List.of(a1));
 
-        cursoRepository.save(c1);*/
+        cursoRepository.save(c1);
     }
 }

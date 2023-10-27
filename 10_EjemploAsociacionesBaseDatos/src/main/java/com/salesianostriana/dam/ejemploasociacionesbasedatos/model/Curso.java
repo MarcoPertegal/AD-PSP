@@ -3,6 +3,7 @@ package com.salesianostriana.dam.ejemploasociacionesbasedatos.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,11 +18,11 @@ public class Curso {
 
     private String nombre;
     private String tutor;
-    /*
-    @OneToMany(mappedBy="curso")
-    @EqualsAndHashCode.Exclude
+
     @ToString.Exclude
-    private List<Alumno> alumnos;
-    */
+    @OneToMany(mappedBy = "curso")
+    @Builder.Default
+    private List<Alumno> alumnos = new ArrayList<>();
+
 }
 
