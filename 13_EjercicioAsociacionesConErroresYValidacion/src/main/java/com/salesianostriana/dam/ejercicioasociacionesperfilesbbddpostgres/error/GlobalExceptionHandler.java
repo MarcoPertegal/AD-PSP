@@ -15,9 +15,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     ProblemDetail handleProfesorNotFoundException(ProfesorNotFoundException p){
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, p.getMessage());
         problemDetail.setTitle("aaa Profesor Not Found");
-        problemDetail.setType(URI.create("https://api.bookmarks.com/errors/not-found"));
+        problemDetail.setType(URI.create("https://api.ejercicioprueba.com/errors/not-found"));
         return problemDetail;
     }
-    //ver la relacion entre global exception handler y profesor not foundException
-    //iplementar la validación y dto
+
+    @ExceptionHandler(ProfesorNotFoundException.class)
+    ProblemDetail handleNombreNullException(ProfesorNombreNullException p){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, p.getMessage());
+        problemDetail.setTitle("aaa Profesor Not Found");
+        problemDetail.setType(URI.create("https://api.ejercicioprueba.com/errors/null"));
+        return problemDetail;
+    }
 }

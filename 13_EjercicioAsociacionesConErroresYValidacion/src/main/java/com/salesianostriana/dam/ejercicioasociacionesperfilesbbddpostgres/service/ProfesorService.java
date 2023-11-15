@@ -1,10 +1,11 @@
 package com.salesianostriana.dam.ejercicioasociacionesperfilesbbddpostgres.service;
 
+import com.salesianostriana.dam.ejercicioasociacionesperfilesbbddpostgres.dto.EditProfesorDto;
 import com.salesianostriana.dam.ejercicioasociacionesperfilesbbddpostgres.error.ProfesorNotFoundException;
 import com.salesianostriana.dam.ejercicioasociacionesperfilesbbddpostgres.model.Profesor;
 import com.salesianostriana.dam.ejercicioasociacionesperfilesbbddpostgres.repository.ProfesorRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +16,8 @@ public class ProfesorService {
 
     private final ProfesorRepository profesorRepository;
 
-    public Profesor create (Profesor nuevo){
-        Profesor p = new Profesor();
-        p.setNombre(nuevo.getNombre());
-        p.setEmail(nuevo.getEmail());
-        p.setPuntuacion(nuevo.getPuntuacion());
-        return profesorRepository.save(p);
+    public Profesor save(EditProfesorDto editProfesorDto){
+        return profesorRepository.save(editProfesorDto.toProfesor(editProfesorDto));
     }
     public Profesor getById(Long id){
         return profesorRepository.findById(id)
