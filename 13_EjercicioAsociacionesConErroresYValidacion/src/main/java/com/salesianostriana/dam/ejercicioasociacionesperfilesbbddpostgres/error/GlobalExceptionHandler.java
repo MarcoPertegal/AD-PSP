@@ -21,8 +21,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ProfesorNotFoundException.class)
     ProblemDetail handleNombreNullException(ProfesorNombreNullException p){
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, p.getMessage());
-        problemDetail.setTitle("aaa Profesor Not Found");
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_ACCEPTABLE, p.getMessage());
+        problemDetail.setTitle("Profesor name cant be null");
         problemDetail.setType(URI.create("https://api.ejercicioprueba.com/errors/null"));
         return problemDetail;
     }
