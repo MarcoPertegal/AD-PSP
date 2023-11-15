@@ -13,6 +13,7 @@ public class initData {
         Profesor p1 = Profesor.builder()
                 .nombre("Juan")
                 .email("juan@gmail.com")
+                .puntuacion(20)
                 .build();
     }
 }
