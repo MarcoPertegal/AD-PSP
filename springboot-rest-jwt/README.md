@@ -1,2 +1,2 @@
-# springboot-rest-jwt
-Password expirationexample
+# springboot-rest-jwt-password-expiration
+Password expiration example
