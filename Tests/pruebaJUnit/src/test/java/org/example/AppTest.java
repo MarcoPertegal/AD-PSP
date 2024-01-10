@@ -12,6 +12,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class AppTest {
 
@@ -37,7 +38,8 @@ public class AppTest {
     }
     @AfterEach
     void tearDown(){
-
+        hs = null;
+        c = null;
     }
 
     @Test
@@ -73,19 +75,21 @@ public class AppTest {
         assertEquals(resultado, c.sumar(a,b));
     }
 
-    //Ver como pasar el boleano
+    //Para pasar varios parametros a un mismo test
     @ParameterizedTest
     @MethodSource("generateCollectionsWithElements")
-    void testWhenBothCollectionsAreNotNull(List<Integer>a, List<Integer>b, int size){
+    void testWhenBothCollectionsAreNotNull(List<Integer>a, List<Integer>b,boolean expectedResult,  int sizeResult){
         hs.addAll(a);
         c.addAll(b);
-        assertTrue(hs.removeAll(c));
-        assertEquals(size, hs.size());
+        assertEquals(expectedResult, hs.removeAll(c));
+        assertEquals(sizeResult, hs.size());
     }
     static Stream<Arguments> generateCollectionsWithElements(){
         return Stream.of(
-                Arguments.arguments(List.of(1,2,3,4), List.of(1,2,3,5,6,7,8), 1),
-                Arguments.arguments(List.of(1,2,3,5,6,7,8), List.of(1,2,3,4), 4)
+                arguments(List.of(1,2,3,4), List.of(1,2,3,5,6,7,8),true, 1),
+                arguments(List.of(1,2,3,5,6,7,8), List.of(1,2,3,4),true, 4),
+                arguments(List.of(), List.of(1), false, 0),
+                arguments(List.of(1,2,3,4),List.of(), false, 4)
         );
     }
 
