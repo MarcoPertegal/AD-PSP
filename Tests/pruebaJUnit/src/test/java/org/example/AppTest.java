@@ -1,11 +1,15 @@
 package org.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,8 +23,74 @@ public class AppTest {
     //los metodos asset comprueban que se cumple algo, es una especie de comprobacion if
     //TEST Basados en la tabla de los apuntes
     //con removeAll se eliminan todos los elementos de la lista que coincidan con la lista c
+    //realizar un test si se cumple una condicion usamos asumptions es como un if para que se realicce el test si se cumpl euna condicon
+
+
+    //para no instanciar el hashset todo el rato
+    HashSet<Integer> hs;
+    List<Integer> c;
+
+    @BeforeEach
+    void setUp(){
+        hs = new HashSet<>();
+        c = new ArrayList<>();
+    }
+    @AfterEach
+    void tearDown(){
+
+    }
+
     @Test
-    void test1(){
+    void hashSetSizeLessThanCollectionSize(){
+        //solo queda el valor 4
+        hs.addAll(List.of(1,2,3,4,5));
+        c.addAll(List.of(1,2,3,4,5,5,6));
+
+        assertTrue(hs.removeAll(c));
+        assertEquals(1, hs.size());
+        assertTrue(hs.contains(4));
+    }
+
+    @Test
+    void hashSetSizeGreaterThanCollectionSize(){
+        //solo queda el valor 4
+        hs.addAll(List.of(1,2,3,5,6,7,8));
+        c.addAll(List.of(1,2,3,4,5));
+
+        assertTrue(hs.removeAll(c));
+        assertEquals(3, hs.size());
+    }
+
+
+    //cuando los test tienen el mismo cuerpo se puede variar el valor de los parametros, para no reescribir codigo
+    @ParameterizedTest
+    @CsvSource({
+        "1,1,2",
+        "0,1,1"
+    })
+    void sumarDosNuemrosPArametrizado(int a, int b, int resultado){
+        Calculadora c = new Calculadora();
+        assertEquals(resultado, c.sumar(a,b));
+    }
+
+    //Ver como pasar el boleano
+    @ParameterizedTest
+    @MethodSource("generateCollectionsWithElements")
+    void testWhenBothCollectionsAreNotNull(List<Integer>a, List<Integer>b, int size){
+        hs.addAll(a);
+        c.addAll(b);
+        assertTrue(hs.removeAll(c));
+        assertEquals(size, hs.size());
+    }
+    static Stream<Arguments> generateCollectionsWithElements(){
+        return Stream.of(
+                Arguments.arguments(List.of(1,2,3,4), List.of(1,2,3,5,6,7,8), 1),
+                Arguments.arguments(List.of(1,2,3,5,6,7,8), List.of(1,2,3,4), 4)
+        );
+    }
+
+    @Test
+    static void test1(){
 
         HashSet<Integer> hs = new HashSet<>(List.of(1,2,3,4,5));
         Collection<Integer> c = Collections.emptyList();
@@ -39,15 +109,6 @@ public class AppTest {
         assertEquals(4, hs.size());
     }
 
-    @Test
-    void test3(){
-
-        HashSet<Integer> hs = new HashSet<>(List.of(1,2,3,4,5));
-        List<Integer> c = List.of(1,2,3,4,5,6);
-
-        assertTrue(hs.removeAll(c));
-        assertEquals(0, hs.size());
-    }
 
     @Test
     void test4(){
