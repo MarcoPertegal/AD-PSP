@@ -1,15 +1,15 @@
 package com.salesianostriana.dam.ejemplo01testsreposservices;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
 @Table(name="producto")
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

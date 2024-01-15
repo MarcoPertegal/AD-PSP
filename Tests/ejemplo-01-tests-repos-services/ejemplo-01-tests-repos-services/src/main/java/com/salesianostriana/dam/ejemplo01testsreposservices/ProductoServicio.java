@@ -31,6 +31,7 @@ public class ProductoServicio {
         return repositorio.findByPrecioLessThan(10);
     }
 
+    /*
     public List<GetProductoDto> precioMenorQue10yDisponible(){
         List<Producto> todos = repositorio.findAll();
 
@@ -44,5 +45,5 @@ public class ProductoServicio {
             }
         }
         if ()
-    }
+    }*/
 }
