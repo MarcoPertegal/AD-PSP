@@ -37,18 +37,15 @@ public class NoteRepositoryTest {
 
 
     @Test
-    void findPetTypes() {
-        String autor = "juanjo";
+    void findByAuthor() {
+        String autor = "juan";
 
         List<Note> result = noteRepository.findByAuthor(autor);
 
         assertFalse(result.isEmpty());
+        assertEquals(1, result.size());
+        assertEquals("juan", result.get(0).getAuthor());
 
-        /*
-        assertFalse(resultado.isEmpty());
-        assertEquals(2, resultado.size());
-        assertEquals("cat", resultado.get(0).getName());
-         */
     }
 
 
