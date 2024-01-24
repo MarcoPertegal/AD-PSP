@@ -4,11 +4,13 @@ import net.openwebinars.springboot.restjwt.note.controller.NoteController;
 import net.openwebinars.springboot.restjwt.note.model.Note;
 import net.openwebinars.springboot.restjwt.note.repo.NoteRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,10 +22,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.testcontainers.shaded.org.hamcrest.Matchers.hasSize;
 import static org.testcontainers.shaded.org.hamcrest.Matchers.is;
-
-@WebMvcTest(NoteController.class)
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(controllers = NoteController.class)
 public class NoteControllerTest {
-
+    //error
     @Autowired
     MockMvc mockMvc;
     @Autowired
